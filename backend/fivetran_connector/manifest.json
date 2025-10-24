@@ -1,0 +1,13 @@
+{
+  "name": "USDA NASS QuickStats Connector",
+  "description": "A Fivetran connector for the USDA NASS QuickStats API.",
+  "configuration": [
+    {
+      "name": "api_key",
+      "label": "API Key",
+      "type": "string",
+      "required": true,
+      "description": "Your USDA NASS QuickStats API key."
+    }
+  ]
+}

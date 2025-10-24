@@ -11,23 +11,23 @@ This document serves as a blueprint for building the DataVerse AI project, a uni
 A universal AI-powered insight engine that:
 
 - Uses **Fivetran** to pull, clean, and sync live data from various agricultural sources (e.g., market prices, weather forecasts, soil sensor data, and crop yields).
-- Stores that data in **BigQuery** or **Cloud SQL**, where it is processed by **Vertex AI** and **Gemini** for embeddings, clustering, and analysis.
+- Stores that data in **Amazon Redshift**, where it is processed by **Amazon Bedrock** for embeddings, clustering, and analysis.
 - Uses **Elastic’s hybrid search** for real-time, context-aware semantic and vector search, and conversational discovery.
 
 It’s like “ChatGPT for your entire farm,” powered by Elastic search relevance and Fivetran data automation.
 
 ## 🏗️ MVP Blueprint
 
-### 1. Data Layer (Fivetran SDK + Google Cloud)
+### 1. Data Layer (Fivetran SDK + AWS)
 
 - **Build a custom Fivetran connector:** The connector will pull data from a public agricultural API (e.g., USDA for market prices, or a public weather API for weather data).
-- **Fivetran Ingestion:** Fivetran will automatically ingest, clean, and push this data to a BigQuery table.
-- **Vertex AI Processing:** Run Vertex AI models on the BigQuery data to create embeddings and structured summaries. For example, create vector representations of crop data and weather patterns.
+- **Fivetran Ingestion to S3:** Fivetran will automatically ingest, clean, and push this data to an Amazon S3 bucket.
+- **Amazon Bedrock Processing:** Run Amazon Bedrock models on the data in S3 to create embeddings and structured summaries. For example, create vector representations of crop data and weather patterns.
 
-### 2. Search & Insight Layer (Elastic + Gemini)
+### 2. Search & Insight Layer (Elastic + Amazon Bedrock)
 
-- **Elastic Indexing:** Elastic will index the processed embeddings and summaries from BigQuery.
-- **Gemini Agent:** A Gemini agent will provide a contextual Q&A and visualization layer on top of Elastic’s search.
+- **Elastic Indexing:** Elastic will index the processed embeddings and summaries from Amazon S3.
+- **Amazon Bedrock Agent:** An Amazon Bedrock agent will provide a contextual Q&A and visualization layer on top of Elastic’s search.
 - **Hybrid Search:** The system will use a combination of keyword and vector search for deep semantic understanding. Farmers can ask questions like:
     - "What was the average price of corn in Iowa last month?"
     - "Show me the weather forecast for the next 7 days in my location."
@@ -36,8 +36,8 @@ It’s like “ChatGPT for your entire farm,” powered by Elastic search releva
 ### 3. Experience Layer
 
 - **Conversational Dashboard:** A simple web-based dashboard built with React and a Python (FastAPI) backend.
-- **Natural Dialogue:** Use Gemini APIs for natural language conversation and the Elastic API for data retrieval.
-- **Visualizations:** Display real-time trend charts and graphs using data from BigQuery, visualized with a library like Google Charts or Streamlit.
+- **Natural Dialogue:** Use Amazon Bedrock APIs for natural language conversation and the Elastic API for data retrieval.
+- **Visualizations:** Display real-time trend charts and graphs using data from Amazon Redshift, visualized with a library like Google Charts or Streamlit.
 
 ## 💡 Example Use Case: AgriTech
 
@@ -49,10 +49,10 @@ It’s like “ChatGPT for your entire farm,” powered by Elastic search releva
 
 - **Backend:** Python (FastAPI)
 - **Frontend:** React + Tailwind CSS
-- **AI Core:** Vertex AI (LLMs, embeddings), Gemini API
+- **AI Core:** Amazon Bedrock (LLMs, embeddings)
 - **Search Engine:** Elastic (hybrid keyword + vector search)
-- **Data Sync:** Fivetran SDK → BigQuery
-- **Hosting:** Google Cloud Run / Vercel
+- **Data Sync:** Fivetran SDK → Amazon S3 → Amazon Redshift
+- **Hosting:** AWS Elastic Beanstalk / Vercel
 - **License:** MIT
 
 ## 💰 Monetization Model (Post-Hackathon)
@@ -64,7 +64,7 @@ It’s like “ChatGPT for your entire farm,” powered by Elastic search releva
 
 ## 🎬 Submission Strategy
 
-- **Track Selection:** Apply under the **Elastic Challenge**, but showcase the deep integration of **Fivetran + Vertex AI** to stand out.
+- **Track Selection:** Apply under the **Elastic Challenge**, but showcase the deep integration of **Fivetran + Amazon Bedrock** to stand out.
 - **Judges will see:** Cross-partner innovation, which scores high on *Technological Implementation* and *Idea Quality*.
 - **Title:** “**DataVerse AI: Turning Distributed Data into Living Knowledge**.”
 - **3-min video:** Show the connector setup, a query, and the real-time AI search results.
@@ -73,7 +73,7 @@ It’s like “ChatGPT for your entire farm,” powered by Elastic search releva
 
 1.  ✅ **Confirm Vertical:** AgriTech (Done).
 2.  🧠 **Define Dataset:** Define the first dataset to ingest via the Fivetran SDK (e.g., USDA agricultural data).
-3.  🔍 **Set up Cloud Services:** Set up an Elastic Cloud instance and a Vertex AI embedding model.
-4.  💬 **Build UI:** Build the conversational UI layer with the Gemini API.
+3.  🔍 **Set up Cloud Services:** Set up an Elastic Cloud instance and an Amazon Bedrock embedding model.
+4.  💬 **Build UI:** Build the conversational UI layer with the Amazon Bedrock API.
 5.  🎥 **Prepare Demo:** Prepare a demo video showing the data flow: dataset → sync → search → insights.
 6.  🚀 **Submit:** Submit under the Elastic Challenge.
